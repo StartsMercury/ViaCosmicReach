@@ -1,0 +1,5 @@
+name: "ViaCosmicReach"
+version: "${version}"
+author: "RK_01"
+main: "net.raphimc.viacosmicreach.viaproxy.ViaCosmicReachPlugin"
+min-version: "3.3.4"
