@@ -26,32 +26,11 @@ repositories {
         url = "https://repo.viaversion.com"
     }
     maven {
-        name = "Lenni0451"
-        url = "https://maven.lenni0451.net/everything"
-    }
-    maven {
-        name = "OpenCollab Releases"
-        url = "https://repo.opencollab.dev/maven-releases"
-    }
-    maven {
-        name = "OpenCollab Snapshots"
-        url = "https://repo.opencollab.dev/maven-snapshots"
-    }
-    maven {
-        name = "Minecraft Libraries"
-        url = "https://libraries.minecraft.net"
-
-        content {
-            includeGroup "com.mojang"
-        }
-    }
-    maven {
         name = "Jitpack"
         url = "https://jitpack.io"
 
         content {
             includeGroup "com.github.FinalForEach"
-            includeGroup "com.github.Oryxel"
         }
     }
 }
@@ -96,11 +75,11 @@ jar {
     }
 }
 
-tasks.register("runServer", JavaExec) {
+tasks.register("runViaProxy", JavaExec) {
     dependsOn "jar"
 
     mainClass = "net.raphimc.viaproxy.ViaProxy"
-    classpath sourceSets.main.runtimeClasspath
+    classpath sourceSets.main.compileClasspath
 
     workingDir = file("run")
 
@@ -110,12 +89,12 @@ tasks.register("runServer", JavaExec) {
             pluginsDir.mkdirs()
 
         // Copy JAR into plugins dir
-        new File(pluginsDir, "plugin.jar").bytes = tasks.jar.archiveFile.get().asFile.bytes
+        new File(pluginsDir, "ViaCosmicReach.jar").bytes = tasks.jar.archiveFile.get().asFile.bytes
     }
 
     doLast {
         // Delete JAR from plugins dir
-        new File(workingDir, "plugins/plugin.jar}").delete()
+        new File(workingDir, "plugins/ViaCosmicReach.jar").delete()
     }
 }
 
