@@ -209,9 +209,10 @@ public class ChunkTracker extends StoredObject {
                 //final ISkylightData skylightData = cosmicReachChunkSection.skylightData();
                 final ISkylightData skylightData = null; // TODO: Skylight is broken in CR
                 final IBlockLightData blockLightData = cosmicReachChunkSection.blockLightData();
-                if (skylightData != null) {
+                /*if (skylightData != null) {
                     chunkSectionLight.setSkyLight(new byte[2048]);
-                }
+                }*/
+                chunkSectionLight.setSkyLight(FULL_LIGHT.clone());
                 final NibbleArray remappedSkyLight = chunkSectionLight.getSkyLightNibbleArray();
                 final NibbleArray remappedBlockLight = chunkSectionLight.getBlockLightNibbleArray();
                 for (int y = 0; y < 16; y++) {
